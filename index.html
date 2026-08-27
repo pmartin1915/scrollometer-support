@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scrollometer — Support</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #EEF1F5;
+      --raised: #FBFCFD;
+      --text: #101820;
+      --secondary: #4A5563;
+      --accent: #0B5FBF;
+      --border: #D1D5DB;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0B0F14;
+        --raised: #131A22;
+        --text: #EDF2F7;
+        --secondary: #9AAAB8;
+        --accent: #4FA8FF;
+        --border: #2A3441;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .container {
+      max-width: 70ch;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 3rem;
+    }
+
+    main {
+      background: var(--raised);
+      border-radius: 12px;
+      padding: 2rem 1.5rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin: 0 0 0.25rem;
+      line-height: 1.2;
+    }
+
+    .tagline {
+      font-size: 1.125rem;
+      color: var(--secondary);
+      margin: 0 0 1.5rem;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      margin: 2rem 0 0.75rem;
+      line-height: 1.3;
+    }
+
+    h3 {
+      font-size: 1rem;
+      margin: 1.25rem 0 0.5rem;
+      line-height: 1.35;
+    }
+
+    p {
+      margin: 0 0 1rem;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    a:hover {
+      text-decoration: none;
+    }
+
+    ol {
+      margin: 0 0 1rem;
+      padding-left: 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    .contact {
+      color: var(--secondary);
+      margin: 1.5rem 0;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--secondary);
+      font-size: 0.875rem;
+      margin-top: 2rem;
+    }
+
+    footer p {
+      margin: 0.25rem 0;
+    }
+
+    @media (max-width: 400px) {
+      main {
+        padding: 1.5rem 1rem;
+      }
+
+      .container {
+        padding: 1rem 0.75rem 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <main>
+      <h1>Scrollometer</h1>
+      <p class="tagline">Find out how far you actually scroll.</p>
+
+      <p>Scrollometer turns the time you spend scrolling into a distance you can picture. It runs entirely on your iPhone. It has no account, no sign-in, and no server — nothing it measures ever leaves your device.</p>
+
+      <h2>Getting help</h2>
+      <p>Email <a href="mailto:pmartin1913@gmail.com">pmartin1913@gmail.com</a>. Include your iPhone model and iOS version if you are reporting something that is not working, and I will reply.</p>
+
+      <h2>Frequently asked questions</h2>
+
+      <h3>My distance says zero, or has stopped updating.</h3>
+      <p>Scrollometer depends on Apple's Screen Time service reporting your usage to it, and that service occasionally stops delivering. Three things to check, in order:</p>
+      <ol>
+        <li>Open Settings inside Scrollometer and confirm Screen Time access is still granted. iOS can revoke it, particularly after an iOS update.</li>
+        <li>Confirm you have selected at least one app to track. Scrollometer only measures the apps you explicitly choose.</li>
+        <li>If both look right, open Settings → Advanced → Diagnostics and use <strong>Re-register monitoring</strong>. This restarts tracking. Be aware that today's figure restarts from zero, because Apple's service only counts usage recorded after monitoring begins.</li>
+      </ol>
+      <p>If it is still stuck after that, email me — that is a bug worth knowing about.</p>
+
+      <h3>How is the distance calculated?</h3>
+      <p>Multiply three numbers: how many minutes you spent in an app, how fast people typically scroll in that app (measured in screen-heights per minute), and the physical height of your iPhone's display.</p>
+      <p>This is an <strong>estimate, not a measurement</strong>, and Scrollometer is deliberate about saying so. iOS does not let any app watch what happens inside another app — that is a privacy protection, and a good one. What iOS provides, with your permission, is how much <em>time</em> you spent. The distance is a model built on top of that time. The Methodology screen inside the app shows the exact figure used for every app you track.</p>
+
+      <h3>Why does it say "at least"?</h3>
+      <p>Apple reports your usage in roughly one-minute increments, so a partial minute is not counted. Every total is therefore a floor. The real number is that figure or higher, never lower. Showing it as "at least" is more honest than rounding up.</p>
+
+      <h3>Why does Scrollometer need Screen Time access?</h3>
+      <p>It is the only way for an app to learn how long you spent in other apps. Scrollometer asks for it during setup and uses it for exactly one purpose: counting minutes in the apps you selected, so it can convert them to a distance.</p>
+      <p>Scrollometer cannot see what you looked at, who you talked to, or what you typed. No app can. Apple's Screen Time framework does not expose that, and Scrollometer requests nothing beyond the usage time for apps you have picked yourself.</p>
+
+      <h3>Does Scrollometer collect or send any of my data?</h3>
+      <p>No. Not anonymised, not aggregated, not for analytics, not for advertising. The app contains no networking code at all, no analytics SDK and no advertising SDK. Everything it records stays in its own storage on your iPhone and is deleted when you delete the app. See the <a href="privacy.html">privacy policy</a>.</p>
+
+      <h3>Can I change which apps are tracked?</h3>
+      <p>Yes — the app picker is Apple's own, so the apps you choose are never revealed to Scrollometer as names it can read or transmit. iOS hands the app an opaque token instead.</p>
+
+      <h3>Does my history sync to my other devices?</h3>
+      <p>No. Version 1 stores everything locally on one device. There is no iCloud sync, because there is no server and no account.</p>
+
+      <h3>Which iPhones does it support?</h3>
+      <p>iPhone running iOS 17 or later.</p>
+
+      <h2>About</h2>
+      <p>Scrollometer is made by Martin Apps LLC, a one-person studio. If something is broken or a number looks wrong, email <a href="mailto:pmartin1913@gmail.com">pmartin1913@gmail.com</a> — it goes to a person.</p>
+    </main>
+
+    <footer>
+      <p><a href="privacy.html">Privacy Policy</a></p>
+      <p>Martin Apps LLC · Last updated 2026-08-26</p>
+    </footer>
+  </div>
+</body>
+</html>
