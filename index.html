@@ -143,7 +143,7 @@
       <ol>
         <li>Open Settings inside Scrollometer and confirm Screen Time access is still granted. iOS can revoke it, particularly after an iOS update.</li>
         <li>Confirm you have selected at least one app to track. Scrollometer only measures the apps you explicitly choose.</li>
-        <li>If both look right, open Settings → Advanced → Diagnostics and use <strong>Re-register monitoring</strong>. This restarts tracking. Be aware that today's figure restarts from zero, because Apple's service only counts usage recorded after monitoring begins.</li>
+        <li>If both look right, open Settings → Advanced → Diagnostics and use <strong>Re-register monitoring</strong>. This restarts tracking. Be aware that today's figure restarts from zero: tracking only counts usage that happens after it is restarted.</li>
       </ol>
       <p>If it is still stuck after that, email me — that is a bug worth knowing about.</p>
 
@@ -152,11 +152,12 @@
       <p>This is an <strong>estimate, not a measurement</strong>, and Scrollometer is deliberate about saying so. iOS does not let any app watch what happens inside another app — that is a privacy protection, and a good one. What iOS provides, with your permission, is how much <em>time</em> you spent. The distance is a model built on top of that time. The Methodology screen inside the app shows the exact figure used for every app you track.</p>
 
       <h3>Why does it say "at least"?</h3>
-      <p>Apple reports your usage in roughly one-minute increments, so a partial minute is not counted. Every total is therefore a floor. The real number is that figure or higher, never lower. Showing it as "at least" is more honest than rounding up.</p>
+      <p>Because the <em>time</em> the figure is built from is counted conservatively. Usage is counted in whole minutes, so a partial minute is not counted at all, and the minutes behind your distance are a floor rather than a rounded-up guess.</p>
+      <p>That is a statement about the time, not a guarantee about the distance. The other half of the calculation is a typical scrolling speed for that kind of app, and that is an assumption rather than a measurement of you &mdash; iOS does not let any app watch what happens inside another app. If you scroll faster than the assumed rate the real distance is higher; if you scroll slower, it is lower. The Methodology screen shows the exact rate used for every app you track, so you can see what the estimate rests on.</p>
 
       <h3>Why does Scrollometer need Screen Time access?</h3>
-      <p>It is the only way for an app to learn how long you spent in other apps. Scrollometer asks for it during setup and uses it for exactly one purpose: counting minutes in the apps you selected, so it can convert them to a distance.</p>
-      <p>Scrollometer cannot see what you looked at, who you talked to, or what you typed. No app can. Apple's Screen Time framework does not expose that, and Scrollometer requests nothing beyond the usage time for apps you have picked yourself.</p>
+      <p>It is the mechanism iOS provides for an app to learn how long you spent in other apps. Scrollometer asks for it during setup and uses it for exactly one purpose: counting minutes in the apps you selected, so it can convert them to a distance.</p>
+      <p>Scrollometer cannot see what you looked at, who you talked to, or what you typed. The Screen Time data available to it does not include any of that, and Scrollometer requests nothing beyond the usage time for apps you have picked yourself.</p>
 
       <h3>Does Scrollometer collect or send any of my data?</h3>
       <p>No. Not anonymised, not aggregated, not for analytics, not for advertising. The app contains no networking code at all, no analytics SDK and no advertising SDK. Everything it records stays in its own storage on your iPhone and is deleted when you delete the app. See the <a href="privacy.html">privacy policy</a>.</p>
